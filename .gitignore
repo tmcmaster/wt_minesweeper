@@ -38,3 +38,4 @@ firebase_options.dart
 *.ipr
 *.iws
 coverage/
+.metadata
