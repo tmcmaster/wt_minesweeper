@@ -37,7 +37,7 @@ class MinesweeperTile extends ConsumerWidget {
                   )
                 : Text(
                     value == null
-                        ? '.'
+                        ? ''
                         : value == -1
                             ? 'B'
                             : value.toString(),
