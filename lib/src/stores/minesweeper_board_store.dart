@@ -4,7 +4,7 @@ import 'package:wt_minesweeper/src/models/minesweeper_board.dart';
 
 class MinesweeperBoardStore extends StateNotifier<MinesweeperBoard> {
   static final provider = StateNotifierProvider<MinesweeperBoardStore, MinesweeperBoard>(
-    (ref) => MinesweeperBoardStore(15, 0.5),
+    (ref) => MinesweeperBoardStore(12, 0.5),
   );
 
   static final title = Provider.autoDispose.family<int, int>((ref, index) {

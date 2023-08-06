@@ -64,6 +64,18 @@ class MinesweeperStateStore extends StateNotifier<MinesweeperState> {
         },
       );
     }
+
+    _checkIfWon();
+  }
+
+  void _checkIfWon() {
+    final board = ref.read(MinesweeperBoardStore.provider);
+    final known = ref.read(provider.select((value) => value.known)).length;
+    if ((known / (board.size.area - board.bombs.length) * 100).toInt() == 100) {
+      state = state.copyWith(
+        won: true,
+      );
+    }
   }
 
   void toggleFlag(int index) {
@@ -120,14 +132,6 @@ class MinesweeperStateStore extends StateNotifier<MinesweeperState> {
       localKnown.addAll(indexSet);
       recursiveIndexes.addAll(indexSet);
     }
-    // final recursivePoints = surroundingIndexes
-    //     .where((i) => !board.clues.containsKey(i))
-    //     .map((i) => _getSurrounding(
-    //           i,
-    //           board,
-    //         ))
-    //     .expand((e) => e)
-    //     .toSet();
 
     return {
       ...surroundingIndexes,
